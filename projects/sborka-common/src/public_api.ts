@@ -11,6 +11,7 @@ export * from './lib/Entity/category-group';
 export * from './lib/Entity/circulation';
 export * from './lib/Entity/city';
 export * from './lib/Entity/element-coefficient';
+export * from './lib/Entity/element-coefficient-element-item';
 export * from './lib/Entity/element-table';
 export * from './lib/Entity/element-table-block';
 export * from './lib/Entity/element-table-element';
