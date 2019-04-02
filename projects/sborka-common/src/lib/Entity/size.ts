@@ -7,14 +7,14 @@ export class Size implements ObjectWithId {
     height: number;
     diameter: number;
 
-    static summary(size: Size) {
-        if (size.length === undefined) {
+    summary() {
+        if (this.length === undefined) {
             return null;
         }
 
-        let description = size.length + 'x' + size.width + 'x' + size.height;
-        if (size.diameter) {
-            description += ' D' + size.diameter;
+        let description = `${this.length}x${this.width}x${this.height}`;
+        if (this.diameter) {
+            description += ` D${this.diameter}`;
         }
 
         return description;

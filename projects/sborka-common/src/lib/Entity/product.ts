@@ -32,6 +32,8 @@ export class Product extends ObjectWithId {
     templateFile: File = null;
     elementsTables: ElementTable[] = [];
     exclusionRules: ExclusionRule[] = [];
+    manufactureMethod: string;
+    description: string;
 
     static formLongName(product: Product) {
         return product.category.preparationType.preparationWay.name + ' — ' + product.category.name + ' — ' + product.name;
@@ -48,7 +50,7 @@ export class Product extends ObjectWithId {
         });
 
         let result = [];
-        for (let k in typographies) {
+        for (let k of Object.keys(typographies)) {
             result.push(typographies[k]);
         }
 
