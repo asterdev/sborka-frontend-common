@@ -1,8 +1,9 @@
 import {Product} from './product';
 import {User} from './user';
 import {OrderStatus} from './order-status';
+import {ObjectWithId} from './object-with-id';
 
-export interface Order {
+export class Order implements ObjectWithId {
   id: number;
   product: Product;
   customer: User;
