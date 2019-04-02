@@ -1,6 +1,6 @@
 import {ObjectWithId} from './object-with-id';
 import {City} from './city';
-import {LegalTypeEnum} from './legal-type-enum';
+import {LegalType} from './legal-type';
 
 export class User implements ObjectWithId {
   id: number;
@@ -12,5 +12,5 @@ export class User implements ObjectWithId {
   organization: string;
   ITN: string; // ИНН
   isLegal: boolean; // true если юр. лицо
-  legalType: LegalTypeEnum|null;
+  legalType: LegalType|null;
 }
