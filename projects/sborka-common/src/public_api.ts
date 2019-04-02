@@ -33,3 +33,5 @@ export * from './lib/Entity/size';
 export * from './lib/Entity/typography';
 export * from './lib/Entity/typography-component';
 export * from './lib/Entity/user';
+export * from './lib/Entity/order';
+export * from './lib/Entity/order-status';
