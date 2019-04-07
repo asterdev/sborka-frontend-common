@@ -33,3 +33,6 @@ export * from './lib/Entity/size';
 export * from './lib/Entity/typography';
 export * from './lib/Entity/typography-component';
 export * from './lib/Entity/user';
+export * from './lib/Entity/jwt-response';
+
+export * from './lib/Services/internal-api.service';
