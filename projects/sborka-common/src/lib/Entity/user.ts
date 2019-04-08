@@ -16,4 +16,5 @@ export class User implements ObjectWithId {
   registrationDate: string;
   isActivated: boolean;
   cashBalance: number;
+  orderCount: number;
 }
