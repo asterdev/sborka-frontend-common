@@ -6,4 +6,5 @@ export class Payment implements ObjectWithId {
   date: string;
   sum: number;
   type: PaymentType;
+  cashback: string;
 }
