@@ -23,4 +23,5 @@ export class Order implements ObjectWithId {
   completed: boolean; // Заказ выполнен.
   paidUp: boolean; // Заказ оплачен.
   uploaded: boolean; // Если менеджер скачивал макет.
+  sentToProduction: boolean; // Заказ отправлен в производство
 }
