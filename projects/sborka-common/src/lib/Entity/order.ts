@@ -23,5 +23,6 @@ export class Order implements ObjectWithId {
   inPrinting: boolean; // Заказ в печати.
   shipped: boolean; // Заказ отгруженн.
   completed: boolean; // Заказ выполнен.
+  paid: boolean; // Заказ оплачен.
   uploaded: boolean; // Если менеджер скачивал макет.
 }
