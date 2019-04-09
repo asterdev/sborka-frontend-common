@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { SborkaCommonComponent } from './sborka-common.component';
-import {User} from "./Entity/user";
 
 @NgModule({
   declarations: [
