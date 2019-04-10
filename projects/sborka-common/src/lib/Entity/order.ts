@@ -21,8 +21,8 @@ export class Order implements ObjectWithId {
   sentToProduction: boolean; // Заказ отправлен в производство.
   inPrinting: boolean; // Заказ в печати.
   completed: boolean; // Заказ выполнен.
+  defected: boolean; // С заказом что-то не так.
   uploaded: boolean; // Если менеджер скачивал макет.
   shipped: boolean; // Заказ отгружен.
   paidUp: boolean; // Заказ оплачен.
-  defect: boolean; // С заказом что-то не так.
 }
