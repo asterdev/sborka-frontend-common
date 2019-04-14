@@ -592,7 +592,7 @@ export class InternalApiService {
     const data = InternalApiService.formElementTableData(elementTable);
     data['isDropdown'] = false;
     data['isExpand'] = false;
-    data['isVisible'] = true;
+    data['isVisible'] = false;
 
     return this.http.post<ElementTable>(this.formUrl('/element_tables'), data);
   }
