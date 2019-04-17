@@ -13,4 +13,8 @@ export class User implements ObjectWithId {
   ITN: string; // ИНН
   isLegal: boolean; // true если юр. лицо
   legalType: LegalType|null;
+  registrationDate: string;
+  isActivated: boolean;
+  cashBalance: number;
+  orderCount: number;
 }

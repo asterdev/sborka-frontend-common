@@ -36,3 +36,6 @@ export * from './lib/Entity/user';
 export * from './lib/Entity/jwt-response';
 
 export * from './lib/Services/internal-api.service';
+export * from './lib/Entity/order';
+export * from './lib/Entity/payment-type';
+export * from './lib/Entity/payment';
