@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {Order} from '../Models/order';
-import {OrderStatusInterface} from '../Interfaces/order-status.interface';
+import {OOrder} from '../Entity/o-order';
+import {OrderStatusInterface} from '../Entity/order-status.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -100,12 +100,12 @@ export class OrderService {
    * Получить список заказов
    * @param filterParams: параметры фильтра
    */
-  getOrders(filterParams: any): Observable<Order[]> {
+  getOrders(filterParams: any): Observable<OOrder[]> {
     let url = 'mock/orders';
     if (filterParams.page) {
       url += `?_page=${filterParams.page}&_limit=${filterParams.limit}`;
     }
-    return this.http.get<Order[]>(url);
+    return this.http.get<OOrder[]>(url);
   }
 
   /**
@@ -122,7 +122,7 @@ export class OrderService {
    * @param data: данные
    * @param orderId: идентификатор заказа
    */
-  updateOrder(data: Order, orderId: number) {
+  updateOrder(data: OOrder, orderId: number): Observable<boolean> {
     return this.http.put(`mock/orders/${orderId}`, data)
       .pipe(map(res => true));
   }
