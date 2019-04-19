@@ -541,8 +541,16 @@ export class InternalApiService {
     return this.http.get<Product>(this.formUrl('/products/' + id));
   }
 
-  public getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.formUrl('/products'));
+  public getProducts(filterParams: any = null): Observable<Product[]> {
+    const paramKeys = {};
+    if (filterParams && filterParams.categoryGroup) {
+      paramKeys['category.categoryGroup.id'] = filterParams.categoryGroup;
+    }
+    if (filterParams && filterParams.category) {
+      paramKeys['category.id'] = filterParams.category;
+    }
+    const params = new HttpParams({fromObject: paramKeys});
+    return this.http.get<Product[]>(this.formUrl('/products'), {params});
   }
 
   // PreparationDay
