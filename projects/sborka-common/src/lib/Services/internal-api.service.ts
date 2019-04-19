@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable, BehaviorSubject} from 'rxjs';
 
 import {isObject} from 'util';
@@ -364,8 +364,13 @@ export class InternalApiService {
     return this.http.get<Category>(this.formUrl('/categories/' + id));
   }
 
-  public getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.formUrl('/categories'));
+  public getCategories(filterParams: any = null): Observable<Category[]> {
+    const paramKeys = {};
+    if (filterParams && filterParams.categoryGroup) {
+      paramKeys['categoryGroup.id'] = filterParams.categoryGroup;
+    }
+    const params = new HttpParams({fromObject: paramKeys});
+    return this.http.get<Category[]>(this.formUrl('/categories'), {params});
   }
 
   // ProductComponent
