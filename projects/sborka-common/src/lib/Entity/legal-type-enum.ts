@@ -1,5 +1,5 @@
 export enum LegalTypeEnum {
-  individualEnterpreneur = 1,
+  individualEntrepreneur = 1,
   OOO = 2,
   ZAO = 3
 }

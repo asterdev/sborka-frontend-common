@@ -10,7 +10,7 @@ export class User implements ObjectWithId {
   phone: string;
   city: City;
   organization: string;
-  ITN: string; // ИНН
+  itn: string; // ИНН
   isLegal: boolean; // true если юр. лицо
   legalType: LegalType|null;
   registrationDate: string;
