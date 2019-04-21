@@ -369,6 +369,12 @@ export class InternalApiService {
     if (filterParams && filterParams.categoryGroup) {
       paramKeys['categoryGroup.id'] = filterParams.categoryGroup;
     }
+    if (filterParams && filterParams.preparationType) {
+      paramKeys['preparationType.id'] = filterParams.preparationType;
+    }
+    if (filterParams && filterParams.preparationWay) {
+      paramKeys['preparationType.preparationWay.id'] = filterParams.preparationWay;
+    }
     const params = new HttpParams({fromObject: paramKeys});
     return this.http.get<Category[]>(this.formUrl('/categories'), {params});
   }
@@ -548,6 +554,12 @@ export class InternalApiService {
     }
     if (filterParams && filterParams.category) {
       paramKeys['category.id'] = filterParams.category;
+    }
+    if (filterParams && filterParams.preparationType) {
+      paramKeys['category.preparationType.id'] = filterParams.preparationType;
+    }
+    if (filterParams && filterParams.preparationWay) {
+      paramKeys['category.preparationType.preparationWay.id'] = filterParams.preparationWay;
     }
     const params = new HttpParams({fromObject: paramKeys});
     return this.http.get<Product[]>(this.formUrl('/products'), {params});
