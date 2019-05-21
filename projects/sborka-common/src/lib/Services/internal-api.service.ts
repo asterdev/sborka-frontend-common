@@ -696,4 +696,20 @@ export class InternalApiService {
   public getExclusionRule(id: number) {
     return this.http.get<ExclusionRule>(this.formUrl('/exclusion_rules/' + id));
   }
+
+  /**
+   * Saves new order step 2
+   * @param data: form values
+   */
+  public postOrderStepTwo(data: any): Observable<any> {
+    return this.http.post<any>(this.formUrl('/orders/add'), data);
+  }
+
+  /**
+   * Gets order data by id
+   * @param id: orderId
+   */
+  public getOrderById(id: number): Observable<any> {
+    return this.http.get<any>(this.formUrl('/orders/' + id));
+  }
 }
