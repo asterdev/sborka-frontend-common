@@ -712,4 +712,22 @@ export class InternalApiService {
   public getOrderById(id: number): Observable<any> {
     return this.http.get<any>(this.formUrl('/orders/' + id));
   }
+
+  /**
+   * Saves order template on step 3
+   * @param orderId: orderId
+   * @param formData: files array in formData
+   */
+  public uploadOrderTemplate(orderId: number, formData: any): Observable<any> {
+    return this.http.post<any>(this.formUrl(`/orders/${orderId}/uploadTemplate`), formData);
+  }
+
+  /**
+   * Saves order delivery on step 4
+   * @param orderId: orderId
+   * @param data: form values
+   */
+  public postOrderStepFour(orderId: number, data: any): Observable<any> {
+    return this.http.post<any>(this.formUrl(`/orders/${orderId}/confirmOrder`), data);
+  }
 }
