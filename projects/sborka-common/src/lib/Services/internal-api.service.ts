@@ -730,4 +730,13 @@ export class InternalApiService {
   public postOrderStepFour(orderId: number, data: any): Observable<any> {
     return this.http.post<any>(this.formUrl(`/orders/${orderId}/confirmOrder`), data);
   }
+
+  /**
+   * Шаблоны пользователя
+   * @param filterParams: FilterParams
+   */
+  public getTemplates(filterParams: any): Observable<any> {
+    const params = new HttpParams({fromObject: filterParams});
+    return this.http.get<Product[]>('mock/templates', {params});
+  }
 }
