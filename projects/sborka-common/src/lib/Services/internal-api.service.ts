@@ -39,7 +39,9 @@ export class InternalApiService {
     imgUrl: '/api/media/'
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
+
   apiUrl = '';
   authSubject = new BehaviorSubject(false);
 
@@ -83,7 +85,7 @@ export class InternalApiService {
   }
 
   formUrl(methodUri) {
-      return this.apiUrl + this.environment.apiUrl + methodUri;
+    return this.apiUrl + this.environment.apiUrl + methodUri;
   }
 
   public register(user: User): Observable<JwtResponse> {
@@ -109,7 +111,7 @@ export class InternalApiService {
   }
 
   isAuthenticated() {
-    return  this.authSubject.asObservable();
+    return this.authSubject.asObservable();
   }
 
   public logout() {
@@ -698,14 +700,6 @@ export class InternalApiService {
   }
 
   /**
-   * Saves new order step 2
-   * @param data: form values
-   */
-  public postOrderStepTwo(data: any): Observable<any> {
-    return this.http.post<any>(this.formUrl('/orders/add'), data);
-  }
-
-  /**
    * Gets order data by id
    * @param id: orderId
    */
@@ -714,16 +708,24 @@ export class InternalApiService {
   }
 
   /**
-   * Saves order template on step 3
-   * @param orderId: orderId
-   * @param formData: files array in formData
+   * Сохранить параметры продукта при офомление заказа шаг 4
+   * @param data: form values
    */
-  public uploadOrderTemplate(orderId: number, formData: any): Observable<any> {
+  public postOrderStepTwo(data: any): Observable<any> {
+    return this.http.post<any>(this.formUrl('/orders/add'), data);
+  }
+
+  /**
+   * Загрузить макет на 3 шаге оформления заказа
+   * @param orderId: number
+   * @param formData: FormData
+   */
+  public postOrderStepThree(orderId: number, formData: FormData): Observable<any> {
     return this.http.post<any>(this.formUrl(`/orders/${orderId}/uploadTemplate`), formData);
   }
 
   /**
-   * Saves order delivery on step 4
+   * Сохранить данные о доставке при оформление заказа шаг 4
    * @param orderId: orderId
    * @param data: form values
    */
@@ -731,12 +733,45 @@ export class InternalApiService {
     return this.http.post<any>(this.formUrl(`/orders/${orderId}/confirmOrder`), data);
   }
 
+
   /**
-   * Шаблоны пользователя
+   * Шаблоны доставки пользователя
    * @param filterParams: FilterParams
    */
-  public getTemplates(filterParams: any): Observable<any> {
-    const params = new HttpParams({fromObject: filterParams});
-    return this.http.get<Product[]>('mock/templates', {params});
+  public getDeliveryTemplates(filterParams: any): Observable<any[]> {
+    return this.http.post<any[]>(this.formUrl('/deliverytemplates/filter'), filterParams);
+  }
+
+  /**
+   * Получить шаблон доставки по id
+   * @param templateId: number
+   */
+  getDeliveryTemplateById(templateId: number): Observable<any> {
+    return this.http.get<any>(this.formUrl(`/deliverytemplates/${templateId}`));
+  }
+
+  /**
+   * Сохранить шаблон доставки
+   * @param body: any
+   */
+  postDeliveryTemplate(body: any): Observable<any> {
+    return this.http.post<any>(this.formUrl('/deliverytemplates/add'), body);
+  }
+
+  /**
+   * Обновить шаблон доставки
+   * @param templateId: number
+   * @param body: any
+   */
+  updateDeliveryTemplate(templateId: number, body: any): Observable<any> {
+    return this.http.put<any>(this.formUrl(`/deliverytemplates/${templateId}/edit`), body);
+  }
+
+  /**
+   * Удалить шаблон доставки
+   * @param templateId: number
+   */
+  deleteDeliveryTemplate(templateId: number): Observable<any> {
+    return this.http.delete(this.formUrl(`/deliverytemplates/${templateId}/remove`), {responseType: 'text'});
   }
 }
